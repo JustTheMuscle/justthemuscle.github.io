@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Us | Just The Muscle</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.png" type="image/png">
+
+</head>
+<script>
+function calculateQuote() {
+  const service = document.getElementById("service-type").value;
+  const hours = parseFloat(document.getElementById("hours").value);
+  const movers = parseInt(document.getElementById("movers")?.value) || 1;
+  let rate = 0;
+
+  switch (service) {
+    case "Moving":
+      rate = 30 * movers;
+      break;
+    case "Towing":
+      rate = 85;
+      break;
+    case "Junk Removal":
+      rate = 75;
+      break;
+    case "Window Installation":
+      rate = 120;
+      break;
+    default:
+      rate = 0;
+  }
+
+  const total = rate * hours;
+  document.getElementById("price-output").textContent = `$${total.toFixed(2)}`;
+  document.getElementById("quote-result").style.display = "block";
+}
+</script>
+
+<body>
+
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="services.html">Services</a> |
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <h1>Contact Us</h1>
+
+<form class="contact-form" action="https://formspree.io/f/xrbavdyd" method="POST">
+  <input type="hidden" name="_next" value="https://justthemuscle.github.io/thankyou.html">
+
+  <label for="service">Select a Service:</label><br>
+  <select id="service" name="service" required>
+    <option value="">-- Please choose one --</option>
+    <option value="Moving">Moving</option>
+    <option value="Towing">Towing</option>
+    <option value="Junk Removal">Junk Removal</option>
+    <option value="Window Installation">Window Installation</option>
+    <option value="Other">Other</option>
+  </select><br><br>
+
+  <label for="email">Email:</label><br>
+  <input type="email" id="email" name="email" required><br><br>
+
+  <label for="message">Message:</label><br>
+  <textarea id="message" name="message" rows="5" required></textarea><br><br>
+
+  <button type="submit" class="cta-button">Send Message</button>
+</form>
+<hr>
+<h2>Get a Quick Estimate</h2>
+
+<form class="contact-form" id="quote-form">
+  <label for="service-type">Select a Service:</label><br>
+  <select id="service-type" name="service-type" required>
+    <option value="">-- Choose a service --</option>
+    <option value="Moving">Moving</option>
+    <option value="Towing">Towing</option>
+    <option value="Junk Removal">Junk Removal</option>
+    <option value="Window Installation">Window Installation</option>
+  </select><br><br>
+
+  <label for="hours">Estimated Hours of Work:</label><br>
+  <input type="number" id="hours" name="hours" min="1" required><br><br>
+  <label for="movers">Number of Movers:</label><br>
+<input type="number" id="movers" name="movers" min="1" required><br><br>
+
+
+  <button type="button" class="cta-button" onclick="calculateQuote()">Estimate Price</button>
+</form>
+
+<div id="quote-result" class="contact-box" style="display:none;">
+  <p><strong>Estimated Price:</strong> <span id="price-output"></span></p>
+</div>
+
+  <div class="contact-box">
+    <p><strong>Phone:</strong> (314) 629-6126</p>
+    <p><strong>Email:</strong> yourname@justthemuscle.com</p>
+    <p><strong>Business Hours:</strong> Monday–Saturday, 8am–6pm</p>
+    <p><strong>Service Area:</strong> Greater St. Louis and surrounding regions</p>
+    <p>To request a quote or schedule a service, please call or email us directly. We respond within 24 hours and always confirm before booking.</p>
+  </div>
+<!-- Last content block -->
+
+<!-- Footer goes here -->
+  <footer class="footer">
+    <p>&copy; 2025 Just The Muscle. All rights reserved.</p>
+    <p>Serving Greater St. Louis with strength, pride, and professionalism.</p>
+  </footer>
+
+
+</body>
+</html>

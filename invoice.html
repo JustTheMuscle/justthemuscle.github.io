@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JustTheMuscle Invoice Generator</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      color: #333;
+    }
+    form, .invoice {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #222;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .invoice {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Quick Invoice Generator</h1>
+
+  <form id="invoiceForm">
+    <label>Customer Name:</label>
+    <input type="text" id="customerName" required>
+
+    <label>Service Date:</label>
+    <input type="date" id="serviceDate" required>
+
+    <label>Service Type:</label>
+    <select id="serviceType">
+      <option value="Local Move">Local Move</option>
+      <option value="Packing">Packing</option>
+      <option value="Heavy Lifting">Heavy Lifting</option>
+    </select>
+
+    <label>Hours or Flat Rate:</label>
+    <input type="text" id="rate" required>
+
+    <label>Total Cost ($):</label>
+    <input type="number" id="totalCost" required>
+
+    <button type="submit">Generate Invoice</button>
+  </form>
+
+  <div class="invoice" id="invoiceDisplay">
+    <h2>Invoice</h2>
+    <p><strong>Customer:</strong> <span id="displayName"></span></p>
+    <p><strong>Date:</strong> <span id="displayDate"></span></p>
+    <p><strong>Service:</strong> <span id="displayService"></span></p>
+    <p><strong>Rate:</strong> <span id="displayRate"></span></p>
+    <p><strong>Total:</strong> $<span id="displayTotal"></span></p>
+  </div>
+
+  <script>
+    document.getElementById('invoiceForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      document.getElementById('displayName').textContent = document.getElementById('customerName').value;
+      document.getElementById('displayDate').textContent = document.getElementById('serviceDate').value;
+      document.getElementById('displayService').textContent = document.getElementById('serviceType').value;
+      document.getElementById('displayRate').textContent = document.getElementById('rate').value;
+      document.getElementById('displayTotal').textContent = document.getElementById('totalCost').value;
+
+      document.getElementById('invoiceDisplay').style.display = 'block';
+    });
+  </script>
+
+</body>
+</html>

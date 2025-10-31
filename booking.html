@@ -49,17 +49,20 @@
 <body>
 
   <nav>
-  <a href="index.html">Home</a> |
-  <a href="about.html">About</a> |
-  <a href="services.html">Services</a> |
-  <a href="contact.html">Contact</a> |
-  <a href="faq.html">FAQ</a> |
-  <a href="booking.html">Book a Move</a>  
-</nav>
+    <a href="index.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="services.html">Services</a> |
+    <a href="contact.html">Contact</a> |
+    <a href="faq.html">FAQ</a> |
+    <a href="booking.html">Book a Move</a>  
+  </nav>
 
   <h1>Book Your Move</h1>
 
+  <!-- 🔧 Hybrid Modular Booking Form -->
   <form id="bookingForm">
+
+    <!-- Contact Info -->
     <label>Full Name:</label>
     <input type="text" id="name" required>
 
@@ -67,34 +70,79 @@
     <input type="tel" id="phone" required>
 
     <label>Email Address:</label>
-    <input type="email" id="email" required>
+    <input type="email" id="email">
 
-    <label>Service Type:</label>
-    <select id="service">
-      <option value="Local Move">Local Move</option>
-      <option value="Packing">Packing</option>
-      <option value="Heavy Lifting">Heavy Lifting</option>
+    <label>Preferred Contact Method:</label>
+    <select id="contact-method">
+      <option value="call">Call</option>
+      <option value="text">Text</option>
     </select>
 
-    <label>Preferred Date & Time:</label>
-    <input type="datetime-local" id="datetime" required>
+    <!-- Service Type -->
+    <label>Service Type:</label>
+    <label><input type="checkbox" name="service" value="Residential Move"> Residential Move</label>
+    <label><input type="checkbox" name="service" value="Packing Help"> Packing Help</label>
+    <label><input type="checkbox" name="service" value="Junk Removal"> Junk Removal</label>
+    <label><input type="checkbox" name="service" value="Trailer-Only Haul"> Trailer-Only Haul</label>
+    <label><input type="checkbox" name="service" value="Other"> Other</label>
+    <textarea placeholder="Describe other service needs..."></textarea>
 
+    <!-- Load Size -->
+    <label>Estimated Load Size:</label>
+    <label><input type="radio" name="load-size" value="Small"> Small (1–2 items)</label>
+    <label><input type="radio" name="load-size" value="Medium"> Medium (half trailer)</label>
+    <label><input type="radio" name="load-size" value="Large"> Large (full trailer)</label>
+    <label><input type="radio" name="load-size" value="Unsure"> Unsure (need quote)</label>
+
+    <!-- Add-On Services -->
+    <label>Add-On Services:</label>
+    <label><input type="checkbox" name="add-ons" value="Packing & Cleaning"> Packing & Cleaning</label>
+    <label><input type="checkbox" name="add-ons" value="Furniture Assembly"> Furniture Assembly/Disassembly</label>
+    <label><input type="checkbox" name="add-ons" value="Dump Fee"> Dump Fee Included</label>
+
+    <!-- Date & Time -->
+    <label>Preferred Date:</label>
+    <input type="date" id="service-date">
+
+    <label>Time Window:</label>
+    <select id="time-window">
+      <option value="morning">Morning</option>
+      <option value="afternoon">Afternoon</option>
+      <option value="flexible">Flexible</option>
+    </select>
+
+    <!-- Location Info -->
     <label>Pickup Address:</label>
     <input type="text" id="pickup" required>
 
-    <label>Drop-off Address:</label>
-    <input type="text" id="dropoff" required>
+    <label>Drop-off Address (if applicable):</label>
+    <input type="text" id="dropoff">
 
+    <label>Access Notes (stairs, elevator, parking):</label>
+    <textarea id="access-notes"></textarea>
+
+    <!-- Referral Source -->
+    <label>How Did You Hear About Us?</label>
+    <label><input type="radio" name="referral" value="Angi"> Angi</label>
+    <label><input type="radio" name="referral" value="Flyer"> Flyer</label>
+    <label><input type="radio" name="referral" value="Referral"> Referral</label>
+    <label><input type="radio" name="referral" value="Repeat Client"> Repeat Client</label>
+    <label><input type="radio" name="referral" value="Other"> Other</label>
+
+    <!-- Notes -->
     <label>Additional Notes:</label>
     <textarea id="notes" rows="4"></textarea>
 
+    <!-- Submit -->
     <button type="submit">Submit Booking</button>
   </form>
 
+  <!-- Confirmation Message -->
   <div class="confirmation" id="confirmationMessage">
     Thank you! Your booking request has been received. We'll contact you shortly to confirm details.
   </div>
 
+  <!-- Confirmation Script -->
   <script>
     document.getElementById('bookingForm').addEventListener('submit', function(e) {
       e.preventDefault();
